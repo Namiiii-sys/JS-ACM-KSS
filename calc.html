@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300..900&family=Syne:wght@400..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body { font-family: 'Syne', sans-serif; }
+    </style>
+</head>
+<body class="flex items-center justify-center h-screen bg-purple-100">
+    <div class="w-64 p-6 rounded-lg shadow-lg shadow-black hover:shadow-none bg-white">
+        <input id="display" type="text" class="w-full mb-4 p-2 text-right border-2 border-gray-400 rounded bg-gray-100" readonly>
+        <div class="grid grid-cols-4 gap-2 bg-gray-200">
+            <button class="bg-red-500 text-white w-full mt-2 rounded" onclick="clearDisplay()">AC</button>
+            <button class="bg-red-500 text-white w-full mt-2 rounded" onclick="deleteLast()">DEL</button>
+            <button class="btn bg-white border-[1px] h-10 w-10 rounded-full" onclick="insert('%')">%</button>
+            <button class="btn bg-white border-[1px] h-10 w-10 rounded-full" onclick="insert('/')">/</button>
+        
+            <button class="btn bg-white border-[1px] h-10 w-10 rounded-full" onclick="insert('7')">7</button>
+            <button class="btn bg-white border-[1px] h-10 w-10 rounded-full" onclick="insert('8')">8</button>
+            <button class="btn bg-white border-[1px] h-10 w-10 rounded-full" onclick="insert('9')">9</button>
+            <button class="btn bg-white border-[1px] h-10 w-10 rounded-full" onclick="insert('*')">*</button>
+        
+            <button class="btn bg-white border-[1px] h-10 w-10 rounded-full" onclick="insert('4')">4</button>
+            <button class="btn bg-white border-[1px] h-10 w-10 rounded-full" onclick="insert('5')">5</button>
+            <button class="btn bg-white border-[1px] h-10 w-10 rounded-full" onclick="insert('6')">6</button>
+            <button class="btn bg-white border-[1px] h-10 w-10 rounded-full" onclick="insert('-')">-</button>
+        
+            <button class="btn bg-white border-[1px] h-10 w-10 rounded-full" onclick="insert('1')">1</button>
+            <button class="btn bg-white border-[1px] h-10 w-10 rounded-full" onclick="insert('2')">2</button>
+            <button class="btn bg-white border-[1px] h-10 w-10 rounded-full" onclick="insert('3')">3</button>
+            <button class="btn bg-white border-[1px] h-10 w-10 rounded-full" onclick="insert('+')">+</button>
+        
+            <button class="btn bg-white border-[1px] h-10 w-10 rounded-full" onclick="insert('00')">00</button>
+            <button class="btn bg-white border-[1px] h-10 w-10 rounded-full" onclick="insert('0')">0</button>
+            <button class="btn bg-white border-[1px] h-10 w-10 rounded-full" onclick="insert('.')">.</button>
+            <button class="btn bg-blue-500 text-white rounded" onclick="calculate()">=</button>
+        </div>
+    </div>
+
+    <script>
+        const display = document.getElementById("display");
+
+        function insert(value) {
+            display.value += value;
+        }
+
+        function clearDisplay() {
+            display.value = "";
+        }
+
+        function deleteLast() {
+            display.value = display.value.slice(0, -1);
+        }
+
+        function calculate() {
+            try {
+                display.value = eval(display.value);
+            } catch (error) {
+                display.value = "Error";
+            }
+        }
+    </script>
+
+</body>
+</html>
+
+    
